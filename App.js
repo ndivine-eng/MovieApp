@@ -5,6 +5,7 @@ import Muvi from './screen/Muvi'
 import Welcome from './screen/Welcome'
 import Create from './screen/Create'
 import Login from './screen/Login'
+import Home from './screen/Home'
 import {NavigationContainer} from '@react-navigation/native'; 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
@@ -21,6 +22,7 @@ export const App=()=>{
       <Stack.Screen name="welcome" component={Welcome} options={{ headerShown: false }} />
       <Stack.Screen name="create" component={Create} options={{ headerShown: false }} />
       <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
     </Stack.Navigator>
   </NavigationContainer>
 
