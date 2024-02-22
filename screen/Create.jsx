@@ -4,7 +4,7 @@ import Feather from "react-native-vector-icons/Feather";
 import { TextInput } from "react-native-paper";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
-const Create =({navigation}) =>{
+export default function ({navigation}){
     return(
         <View style={{width:"100%", height:"100%", backgroundColor:'#26282c' }}>
             <View style={{top:100}}>
@@ -69,4 +69,3 @@ const Create =({navigation}) =>{
     )
 };
 
-export default Create;

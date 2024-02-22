@@ -11,7 +11,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 
 
-export const App=()=>{
+export default function App(){
 
   return(
 
@@ -29,4 +29,3 @@ export const App=()=>{
   );
 };
 
-export default App;

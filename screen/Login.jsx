@@ -5,7 +5,7 @@ import { TextInput } from "react-native-paper";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 
-const Login = ({ navigation }) => {
+export default function Login ({ navigation }) {
     return (
         <View style={{ width: "100%", height: "100%", backgroundColor: '#26282c' }}>
             <View style={{}}>
@@ -65,5 +65,3 @@ const Login = ({ navigation }) => {
         </View>
     )
 };
-
-export default Login;

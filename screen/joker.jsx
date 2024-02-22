@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View, Text, Image, ImageBackground, TouchableOpacity } from 'react-native';
 
-const Joker =({ navigation })=> {
+export default function  Joker ({ navigation }) {
     return (
         <View>
             <ImageBackground>
@@ -28,5 +28,3 @@ const Joker =({ navigation })=> {
         </View>
     );
 };
-
-export default Joker;

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
-const Welcome= ({navigation}) =>{
+export default function Welcome ({navigation}){
     return (
         <View style={{width:"100%", height:"100%", backgroundColor:'#26282c'}}>
              <View style={{alignItems:'center', width:'100%', height:'12%', backgroundColor:'black'}}>
@@ -27,5 +27,3 @@ const Welcome= ({navigation}) =>{
         </View>
     )
 }
-
-export default Welcome;

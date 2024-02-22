@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text,StyleSheet } from "react-native";
 
-const Muvi = ({navigation}) => {
+export default function Muvi({navigation}) {
     return (
         <View style={{width:'100%', height:'100%',justifyContent:'center',alignItems:'center', backgroundColor:'#26282c'}}>
             <View style={{flexDirection:'row',  justifyContent:'center',alignItems:'center'}}>
@@ -15,5 +15,3 @@ const Muvi = ({navigation}) => {
         
     );
 };
-
-export default Muvi;
