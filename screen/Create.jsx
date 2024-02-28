@@ -12,48 +12,48 @@ export default function ({navigation}){
             <Text style={{fontSize:30 , fontWeight:"bold", marginTop:20, color:"white"}}>Create Account</Text>
             </View>
             <View>
-                <Text style={{ marginTop:20, color:"white", marginLeft:20, fontSize:18}}>Enter information below or log in with social account  to get started </Text>
+                <Text style={{ marginTop:20, color:'#595b5f', marginLeft:20, fontSize:18}}>Enter information below or log in with social account  to get started </Text>
             </View>
             <View>
-            <View style={{marginTop:20, marginLeft:20, marginRight:20, display:"flex", flexDirection:"row"}}>
-            <TextInput
-                mode="offline"
-                label="Email"
-                textColor="white"
-                placeholder="Enter Email"
-                style={{backgroundColor:'#26282c', borderRadius:10,borderColor:"white", height:50, fontSize:18, width:"85%", color:"white"}}
-                />
-                <EvilIcons name="envelope" color="white" size={30} style={{marginLeft:10, color:'#f3b919'}} />  
-            </View>
-            <View style={{marginTop:20, marginLeft:20, marginRight:20, display:"flex", flexDirection:"row"}}>
-            <TextInput
-                mode="offline"
-                label="password"
-                textColor="white"
-                placeholder="Enter your password"
-                secureTextEntry
-                style={{backgroundColor:'#26282c', borderRadius:10,borderColor:"white", height:50, fontSize:18, width:"85%", color:"white"}}
-                />
-                <Feather name="eye-off" color="white" size={20} style={{marginLeft:10, color:'#f3b919'}} />  
-            </View>
-            <View style={{marginTop:20, marginLeft:20, marginRight:20, display:"flex", flexDirection:"row"}}>
-            <TextInput
-                mode="offline"
-                label="confirm password"
-                textColor="white"
-                placeholder="confirm your password"
-                secureTextEntry
-                style={{backgroundColor:'#26282c', borderRadius:10,borderColor:"white", height:50, fontSize:18, width:"85%", color:"white"}}
-                />
-                <Feather name="eye-off" color="white" size={20} style={{marginLeft:10, color:'#f3b919'}}/>  
-            </View>
+            <View style={{ marginTop: 20, display: "flex", flexDirection: "row", height: 'auto', width: '100%', }}>
+                        <TextInput
+                            mode="offline"
+                            label="Email"
+                            textColor="white"
+                            placeholder="Enter Email"
+                            style={{ backgroundColor: '#26282c', borderRadius: 10, borderColor: "white", height: 50, fontSize: 18, width: "100%", color: "white" }}
+                            right={<TextInput.Icon icon={'email-outline'} color={'#F6A035'} />}
+                        />
+                    </View>
+                    <View style={{ marginTop: 20, display: "flex", flexDirection: "row" }}>
+                        <TextInput
+                            mode="offline"
+                            label="password"
+                            textColor="white"
+                            placeholder="Enter your password"
+                            secureTextEntry
+                            style={{ backgroundColor: '#26282c', borderRadius: 10, borderColor: "white", height: 50, fontSize: 18, width: "100%", color: "white" }}
+                            right={<TextInput.Icon icon={'eye-off-outline'} color={'#F6A035'} />}
+                        />
+                    </View>
+                    <View style={{ marginTop: 20, display: "flex", flexDirection: "row" }}>
+                        <TextInput
+                            mode="offline"
+                            label="confirm password"
+                            placeholder="confirm your password"
+                            secureTextEntry
+                            textColor="white"
+                            style={{ backgroundColor: '#26282c', borderRadius: 10, borderColor: "white", height: 50, fontSize: 18, width: "100%", color: "white" }}
+                            right={<TextInput.Icon icon={'eye-off-outline'} color={'#F6A035'} />}
+                        />
+                    </View>
 
 
             </View>
 
-            <Text style={{marginTop:30, color:"white", marginLeft:20, fontSize:18}}>Or continue with</Text>
+            <Text style={{marginTop:30, color:'#e2e4e6', marginLeft:20, fontSize:18}}>Or continue with</Text>
             <View style={{marginTop:20, marginLeft:20, marginRight:20, display:"flex", flexDirection:"row"}}>
-                <Image source={require('../assets/google.png')} style={{width:50, height:50}}/>
+                <Image source={require('../assets/google.png')} style={{width:60, height:50}}/>
                 <Image source={require('../assets/fb.png')} style={{width:50, height:50}} />
             </View>
 

@@ -1,10 +1,13 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 
-export default function Photos ({pictures}) {
+export default function Photos ({pictures, text }) {
     return (
         <View >
-            <Image style={{width:200, height:200}}>{pictures}</Image>
+            <Image source={{ uri: `https://image.tmdb.org/t/p/w500${pictures}` }} style={{width:300, height:200, borderRadius:10, marginTop:10, marginLeft:10}} />
+            <Text>{text}</Text>
+            
         </View>
     )
 }
+
