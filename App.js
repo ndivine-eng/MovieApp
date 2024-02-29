@@ -6,6 +6,7 @@ import Welcome from './screen/Welcome'
 import Create from './screen/Create'
 import Login from './screen/Login'
 import Home from './screen/Home'
+import Action from './screen/Action'
 import Search from './screen/Search'
 import List from './screen/List'
 import Profile from './screen/Profile'
@@ -25,22 +26,26 @@ function bottomtab(){
   return(
     <Tab.Navigator>
     <Tab.Screen name="Home" component={Home} options={{
+      headerShown: false,
       tabBarIcon: () => (
         <AntDesign name="home" size={24} color="#f3b919" style={{ marginLeft: 20 }} />
       ),
     }}/>
     <Tab.Screen name="Search" component={Search} options={{
+      headerShown: false,
       tabBarIcon: () => (
         <AntDesign name="search1" size={24} color="black" style={{ marginLeft: 20 }} />
       )
     }} />
     <Tab.Screen name="List" component={List}  options={{
+      headerShown: false,
       tabBarIcon: () => (
         <AntDesign name="file1" size={24} color="black" style={{ marginLeft: 20 }} />
       )
     }}/>
 
     <Tab.Screen name="Profile" component={Profile} options={{
+      headerShown: false,
       tabBarIcon: () => (
         <Ionicons name="notifications-outline" size={25} color="black" />
       )
@@ -60,10 +65,12 @@ export default function App(){
       <Stack.Screen name="welcome" component={Welcome} options={{ headerShown: false }} />
       <Stack.Screen name="create" component={Create} options={{ headerShown: false }} />
       <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name="action" Component={Action} options={{ headerShown: false }} />
       <Stack.Screen name="home" component={bottomtab} options={{ headerShown: false }} />
     </Stack.Navigator>
   </NavigationContainer>
 
+  
   
 
   );

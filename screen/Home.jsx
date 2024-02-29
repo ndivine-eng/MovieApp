@@ -43,6 +43,10 @@ export default function Home({ navigation }) {
 
     }, []);
 
+    const handlepress = () => {
+        navigation.navigate('action');
+    }
+
     return (
         <View style={{ flex: 1, backgroundColor: '#26282c' }}>
             <StatusBar style="dark" />
@@ -83,7 +87,7 @@ export default function Home({ navigation }) {
                         data={posts}
                         keyExtractor={item => item.id.toString()}
                         ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
-                        renderItem={({ item }) => <Photos pictures={item.poster_path} text='0.8' />}
+                        renderItem={({ item }) => <Photos pictures={item.poster_path} text='0.8'/>}
                     />
                     {/* Made for you */}
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 20 }}>
@@ -108,7 +112,7 @@ export default function Home({ navigation }) {
                         data={Pop}
                         keyExtractor={item => item.id.toString()}
                         ItemSeparatorComponent={() => <View style={{ height: 5 }} />}
-                        renderItem={({ item }) => <Popular pictures={item.poster_path} />}
+                        renderItem={({ item }) => <Popular pictures={item.poster_path} Onpress={handlepress}/>}
                     />
                 </View>
             </ScrollView>
