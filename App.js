@@ -60,12 +60,11 @@ export default function App(){
 
     <NavigationContainer>
     <Stack.Navigator initialRouteName="muvi">
-      <Stack.Screen name="muvi" component={Muvi} options={{ headerShown: false }}/>
+      {/* <Stack.Screen name="muvi" component={Muvi} options={{ headerShown: false }}/>
       <Stack.Screen name="joker" component={Joker}options={{ headerShown: false }} />
       <Stack.Screen name="welcome" component={Welcome} options={{ headerShown: false }} />
       <Stack.Screen name="create" component={Create} options={{ headerShown: false }} />
-      <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
-      <Stack.Screen name="action" Component={Action} options={{ headerShown: false }} />
+      <Stack.Screen name="login" component={Login} options={{ headerShown: false }} /> */}
       <Stack.Screen name="home" component={bottomtab} options={{ headerShown: false }} />
     </Stack.Navigator>
   </NavigationContainer>

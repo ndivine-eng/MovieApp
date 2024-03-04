@@ -6,6 +6,9 @@ import Photos from "../Components/Photos";
 
 export default function Search({navigation}) {
 
+    const [Searched, setSearched] = useState([]);
+    const [Search, setSearch] = useState('');
+
     const options = {
         method: 'GET',
         headers: {
@@ -13,15 +16,25 @@ export default function Search({navigation}) {
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YzI5MWM1YzNjZTI1OWZjY2IxODU0MDc5OGM5MGQ3MCIsInN1YiI6IjYzZDhkZTM1YTkxMTdmMDA5ZGE0MDI3NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.32-d9hDkp91rDw98i-VzmDQIOVZA-0DHeIOn9Af2JTI'
         }
     };
+
+    const searchMovies = async () => {
+        try {
+          const response = await fetch(`https://api.themoviedb.org/3/search/movie?language=en-US&page=1&query=${Search}`, options);
+          const data = await response.json();
+          setSearched(data.results || []);
+        } catch (error) {
+          console.error(error);
+        }
+    };
+    
     
     useEffect(() => {
-        fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
-            .then(response => response.json())
-            .then(response => setPosts(response.results))
-            .catch(err => console.error(err));
-    }, []);
-
-    const [posts, setPosts] = useState([]);
+        if (Search.length > 0) {
+            searchMovies();
+        } else {
+            setSearched([]);
+        }
+    },[Search]);
 
     return (
         <View style={{width:"100%", height:"100%", backgroundColor:'#1f2123'}}>
@@ -30,26 +43,30 @@ export default function Search({navigation}) {
                     placeholder={'Search any movie Genre or cast'}
                     mode={'outlined'}
                     textColor='white'
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    clearButtonMode="always"
                     style={{height: 50, marginTop: 50,marginRight: 20, backgroundColor: '#303234', borderRadius: 10, borderColor: "white", fontSize: 18, width: "100%", color: "white"}}
                     right={<TextInput.Icon icon={'magnify'} />}
+                    onChangeText={text => setSearch(text)} // Update Search state
                 /> 
 
                 <View style={{height: 70}}></View>
 
                 <View style={{backgroundColor:'#26282C',  alignContent:"center", alignItems:"center", justifyContent:"center"}} >
-                    <Image source={require('../assets/search.png')} style={{height:200, width:300}}/>
-                    <Text style={{fontSize:20, fontWeight:'bold', color:'white', marginTop:20}}>Search any movie</Text>
-                    <Text style={{fontSize:15, color:'white', margin:20}}>Explore our libraries and enjoy our movies with your family ever </Text>
-                    <Text style={{fontSize:20, fontWeight:'bold', color:'white', marginTop:20}}>May be you likes</Text>
-                    <FlatList
-                        horizontal={true}
-                        data={posts}
-                        keyExtractor={item => item.id.toString()}
-                        ItemSeparatorComponent={() => <View />}
-                        renderItem={({ item }) => (
-                            <Photos pictures={item.poster_path} text='0.8' />
-                        )}
-                    />
+                    {Searched.length === 0 ? ( // Show loading indicator or a message if no results found
+                        <Text style={{fontSize:20, fontWeight:'bold', color:'white', marginTop:20}}>Loading...</Text>
+                    ) : (
+                        <FlatList
+                            horizontal={true}
+                            data={Searched}
+                            keyExtractor={item => item.id.toString()}
+                            ItemSeparatorComponent={() => <View />}
+                            renderItem={({ item }) => (
+                                <Photos pictures={item.poster_path} text='0.8' />
+                            )}
+                        />
+                    )}
                 </View>
             </ScrollView>
         </View>
