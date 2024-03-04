@@ -10,13 +10,11 @@ import Act from "../Components/Act";
 
 export default function Action ({route}) {
         const movie=route.params;
-        // console.log(movie.poster_path)
-        
         const handleplay=()=>{
             fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?language=en-US`, options)
-  .then(response => response.json())
-  .then(response => console.log(response.results[0].key))
-  .catch(err => console.error(err));
+                .then(response => response.json())
+                .then(response => setVideo(response.results[0].key))
+                .catch(err => console.error(err));
         }
 
 
@@ -29,11 +27,13 @@ export default function Action ({route}) {
     };
     const [Actions, setActions] = useState([])
     const [Made, setMade] = useState([])
+    const [video, setVideo] = useState('')
 
     useEffect(() => {
-Getmovie();
-Getpopular();
-    })
+        Getmovie();
+        Getpopular();
+        handleplay();
+    },[])
   const Getpopular = ()=>{
     fetch('https://api.themoviedb.org/3/tv/popular?language=en-US&page=1', options)
     .then(response => response.json())
@@ -55,7 +55,10 @@ Getpopular();
             
             <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold', marginLeft: 20, marginTop: 30 }}>Action</Text>
             <View style={{  marginLeft: 20 ,marginRight:20, marginTop:20 ,}}>
-                <Image source={{uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`}} style={{ width: '100%', height: 300, borderRadius: 10 }}/>
+            <YoutubePlayer
+                height={300}
+                videoId={video} 
+            />
             </View>
 
             <View>
@@ -86,7 +89,12 @@ Getpopular();
                         data={Actions}
                         keyExtractor={item => item.id.toString()}
                         ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
-                        renderItem={({ item }) => <Act pictures={item.poster_path} />}
+                        renderItem={({ item }) => 
+                        <TouchableOpacity onPress={() => navigation.navigate('action',item)}>
+                        <Act pictures={item.poster_path} />
+                        </TouchableOpacity>
+                    
+                    }
                     />
             <View>
                 <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Movie Original Actions</Text>
@@ -96,7 +104,11 @@ Getpopular();
                         data={Actions}
                         keyExtractor={item => item.id.toString()}
                         ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
-                        renderItem={({ item }) => <Act pictures={item.poster_path} />}
+                        renderItem={({ item }) =>
+                        <TouchableOpacity>
+                        <Act pictures={item.poster_path}/>
+                        </TouchableOpacity>
+                        }
                     />
 
 

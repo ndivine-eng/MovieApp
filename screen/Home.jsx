@@ -87,7 +87,11 @@ export default function Home({ navigation }) {
                         data={posts}
                         keyExtractor={item => item.id.toString()}
                         ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
-                        renderItem={({ item }) => <Photos pictures={item.poster_path} text='0.8'/>}
+                        renderItem={({ item }) => 
+                        <TouchableOpacity onPress={()=>navigation.navigate('action',item)}>
+                        <Photos pictures={item.poster_path} text='0.8'/>
+                        </TouchableOpacity>
+                        }
                     />
                     {/* Made for you */}
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 20 }}>
@@ -100,7 +104,14 @@ export default function Home({ navigation }) {
                         data={Made}
                         keyExtractor={item => item.id.toString()}
                         ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
-                        renderItem={({ item }) => <MadeFor name={item.poster_path} />}
+                        renderItem={({ item }) => 
+                        <TouchableOpacity onPress={()=>navigation.navigate('action',item)}>
+                        <MadeFor name={item.poster_path} />
+                        </TouchableOpacity>
+                        
+                        }
+
+                        
                     />
                     {/* Popular */}
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 20 }}>
@@ -108,11 +119,15 @@ export default function Home({ navigation }) {
                         <Text style={{ color: '#595b5f' }}>View more</Text>
                     </View>
                     {/* FlatList for Popular */}
-                    <FlatList
+                    <FlatList                                                                                                 
                         data={Pop}
                         keyExtractor={item => item.id.toString()}
                         ItemSeparatorComponent={() => <View style={{ height: 5 }} />}
-                        renderItem={({ item }) => <Popular pictures={item.poster_path} Onpress={handlepress}/>}
+                        renderItem={({ item }) => 
+                        <TouchableOpacity>
+                        <Popular pictures={item.poster_path} Onpress={()=>navigation.navigate('action',item)}/>
+                        </TouchableOpacity>
+                        }
                     />
                 </View>
             </ScrollView>
