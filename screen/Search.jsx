@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StatusBar } from 'expo-status-bar';
-import { View, Text, Image, FlatList, ScrollView } from 'react-native';
+import { View, Text, Image, FlatList, ScrollView, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import Photos from "../Components/Photos";
 
@@ -58,12 +58,15 @@ export default function Search({navigation}) {
                         <Text style={{fontSize:20, fontWeight:'bold', color:'white', marginTop:20}}>Loading...</Text>
                     ) : (
                         <FlatList
-                            horizontal={true}
+                            // horizontal={true}
                             data={Searched}
                             keyExtractor={item => item.id.toString()}
-                            ItemSeparatorComponent={() => <View />}
+                            ItemSeparatorComponent={() => <View />}  
                             renderItem={({ item }) => (
-                                <Photos pictures={item.poster_path} text='0.8' />
+                                <TouchableOpacity onPress={() => navigation.navigate('action',item)}>
+                                        <Photos pictures={item.poster_path} year={item.release_date} title={item.media_type}/>
+                                </TouchableOpacity>
+                                
                             )}
                         />
                     )}

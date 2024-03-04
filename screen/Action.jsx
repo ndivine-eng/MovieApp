@@ -3,9 +3,22 @@ import { View, Text, Image, TouchableOpacity, ScrollView, Button, FlatList } fro
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import { StatusBar } from 'expo-status-bar';
+import YoutubePlayer from "react-native-youtube-iframe";
 import Act from "../Components/Act";
 
-export default function Action({navigation}) {
+
+
+export default function Action ({route}) {
+        const movie=route.params;
+        // console.log(movie.poster_path)
+        
+        const handleplay=()=>{
+            fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?language=en-US`, options)
+  .then(response => response.json())
+  .then(response => console.log(response.results[0].key))
+  .catch(err => console.error(err));
+        }
+
 
     const options = {
         method: 'GET',
@@ -18,17 +31,21 @@ export default function Action({navigation}) {
     const [Made, setMade] = useState([])
 
     useEffect(() => {
-        fetch('https://api.themoviedb.org/3/tv/popular?language=en-US&page=1', options)
-            .then(response => response.json())
-            .then(response => setActions(response.results))
-            .catch(err => console.error(err));
-
-            fetch('https://api.themoviedb.org/3/movie/changes?page=1', options)
-            .then(response => response.json())
-            .then(response => setMade(response.results))
-            .catch(err => console.error(err));
+Getmovie();
+Getpopular();
     })
-  
+  const Getpopular = ()=>{
+    fetch('https://api.themoviedb.org/3/tv/popular?language=en-US&page=1', options)
+    .then(response => response.json())
+    .then(response => setActions(response.results))
+    .catch(err => console.error(err));
+  }
+  const Getmovie = ()=>{
+    fetch('https://api.themoviedb.org/3/movie/changes?page=1', options)
+    .then(response => response.json())
+    .then(response => setMade(response.results))
+    .catch(err => console.error(err));
+  }
 
     return (
         <ScrollView>
@@ -37,16 +54,17 @@ export default function Action({navigation}) {
             
             
             <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold', marginLeft: 20, marginTop: 30 }}>Action</Text>
-            <View style={{  marginLeft: 20 ,marginRight:20, marginTop:20}}>
-                <Image source={require('../assets/jumanji.jpg')} style={{ width: '100%', height: 300, borderRadius: 10 }}/>
+            <View style={{  marginLeft: 20 ,marginRight:20, marginTop:20 ,}}>
+                <Image source={{uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`}} style={{ width: '100%', height: 300, borderRadius: 10 }}/>
             </View>
 
             <View>
                 <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold', marginLeft: 20, marginTop: 20 }}>
-                    Jumanji : the next lever
+                    {movie.title}
+                  
                 </Text>
                 <Text style={{ color: 'grey', fontSize: 15,  marginLeft: 20, }}>
-                    When the earth is under attach from creatures who hunt their human prey, by sound a teenager
+                    {movie.overview}
                 </Text>
             </View>
             <View style={{ display: "flex", flexDirection: "row", marginLeft: 20, marginTop: 20, justifyContent: "space-between" }}>

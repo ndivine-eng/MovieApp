@@ -22,7 +22,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 
-function bottomtab(){
+function Bottomtab(){
   return(
     <Tab.Navigator>
     <Tab.Screen name="Home" component={Home} options={{
@@ -58,14 +58,15 @@ export default function App(){
 
   return(
 
-    <NavigationContainer>
-    <Stack.Navigator initialRouteName="muvi">
-      {/* <Stack.Screen name="muvi" component={Muvi} options={{ headerShown: false }}/>
+    <NavigationContainer >
+    <Stack.Navigator initialRouteName="home">
+      <Stack.Screen name="muvi" component={Muvi} options={{ headerShown: false }}/>
       <Stack.Screen name="joker" component={Joker}options={{ headerShown: false }} />
       <Stack.Screen name="welcome" component={Welcome} options={{ headerShown: false }} />
       <Stack.Screen name="create" component={Create} options={{ headerShown: false }} />
-      <Stack.Screen name="login" component={Login} options={{ headerShown: false }} /> */}
-      <Stack.Screen name="home" component={bottomtab} options={{ headerShown: false }} />
+      <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name="home" component={Bottomtab} options={{ headerShown: false }} />
+      <Stack.Screen name='action' component={Action}  options={{ headerShown: false }} />
     </Stack.Navigator>
   </NavigationContainer>
 
