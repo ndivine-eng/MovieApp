@@ -89,7 +89,7 @@ export default function Home({ navigation }) {
                         ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
                         renderItem={({ item }) => 
                         <TouchableOpacity onPress={()=>navigation.navigate('action',item)}>
-                        <Photos pictures={item.poster_path} text='0.8'/>
+                        <Photos pictures={item.poster_path}/>
                         </TouchableOpacity>
                         }
                     />

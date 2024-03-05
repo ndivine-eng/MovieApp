@@ -59,7 +59,7 @@ export default function App(){
   return(
 
     <NavigationContainer >
-    <Stack.Navigator initialRouteName="home">
+    <Stack.Navigator initialRouteName="muvi">
       <Stack.Screen name="muvi" component={Muvi} options={{ headerShown: false }}/>
       <Stack.Screen name="joker" component={Joker}options={{ headerShown: false }} />
       <Stack.Screen name="welcome" component={Welcome} options={{ headerShown: false }} />

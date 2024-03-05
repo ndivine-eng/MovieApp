@@ -6,13 +6,13 @@ import { Ionicons } from 'react-native-vector-icons';
 
 export default function Profile() {
     return (
-        <View style={{ backgroundColor: '#26282C', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ backgroundColor: '#26282C',flex:1, alignItems: 'center', justifyContent: 'center' }}>
           <StatusBar style="auto" />
     
           <View style={{ alignItems: 'center', marginBottom: -20 }}>
             <Image
               source={require('../assets/profile.jpg')}
-              style={{ width: 150, height: 150, borderRadius: 75, marginBottom: 10 }}
+              style={{ width: 150, height: 150, borderRadius: 75, marginBottom: 10, marginTop:50 }}
             />
             <Text style={{ fontWeight: 'bold', fontSize: 30, color: 'white' }}>NUBUHORO Divine</Text>
             <Text style={{ color: 'grey', marginTop: 5 }}>nubuhorodivine23@gmail.com</Text>
