@@ -14,7 +14,7 @@ export default function Welcome ({navigation}){
                 <Text style={{fontSize:15, color:'white', margin:20 , textAlign:'center'}}>Free movie streamming all your needs every time and every where </Text>
 
                 <TouchableOpacity>
-                    <Text style={{fontSize:15, color:'black', margin:20 ,marginTop:'30%', textAlign:'center', backgroundColor:'#f3b919', padding:10, borderRadius:5,width:300, height:40, fontWeight:'bold'}} >Watch Movie</Text>   
+                    <Text style={{fontSize:15, color:'black', margin:20 ,marginTop:'30%', textAlign:'center', backgroundColor:'#f3b919', padding:10, borderRadius:5,width:300, height:40, fontWeight:'bold'}} onPress={()=> navigation.navigate('home')} >Watch Movie</Text>   
                 </TouchableOpacity>
                 <TouchableOpacity>
                         <Text style={{fontSize:15, color:'white', margin:20 , textAlign:'center'}}  onPress={() =>
